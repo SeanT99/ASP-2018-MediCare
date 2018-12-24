@@ -1,0 +1,13 @@
+﻿body {
+    margin: 0px;
+    background-color: transparent;
+}
+.remarks {
+    border:groove;
+    border-color: cornflowerblue;
+    background-color: cornflowerblue;
+}
+.remarks2 {
+    border: groove;
+
+}

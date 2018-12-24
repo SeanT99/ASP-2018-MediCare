@@ -1,0 +1,61 @@
+﻿body {
+
+    
+}
+
+.theFAQtitle {
+    margin-left: 18px;
+}
+
+.theFAQtitleChange {
+    margin-left: 18px;
+}
+
+#sideNav {
+    padding-left: 15px;
+    padding-right: 100px;
+    padding-bottom: 130px;
+}
+
+#form1 {
+    
+    font-family: Calibri;
+}
+
+.theSideButtons {
+    font-family: 'Trebuchet MS';
+    border-radius: 100px;
+    font-size: medium;
+    margin-bottom : 3px;
+    padding: 10px;
+}
+
+.theQuestionLabels{
+    padding-left : 10px;
+    text-align : center;
+
+}
+
+.buttonEditFAQ{
+    float: right;
+    margin-right: 30px;
+}
+
+
+
+/* Actual edit page code */
+
+.buttonsSRR{
+    margin-right: 10px;
+    
+    width: 60px;
+    height: 30px;
+}
+
+.lblNotif {
+    float: right;
+    margin-right: 10px;
+}
+
+
+

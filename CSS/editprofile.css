@@ -1,0 +1,39 @@
+﻿body {
+    
+}
+.label {
+    border: groove;
+    border-color: black;
+    border-bottom:solid;
+    background-color: cornflowerblue;
+    width: 100%;
+}
+.table {
+    border-top: solid;
+    border: groove;
+    border-color: black;
+   
+}
+.about {
+    border: groove;
+    border-color: black;
+    border-bottom:solid;
+    background-color:Highlight;
+}
+
+.about2 {
+    border: groove;
+    border-color: black;
+    border-top: thin;
+}
+
+.personal {
+    border: groove;
+    border-color: black;
+    
+}
+
+.personal2 {
+    background-color: Highlight;
+}
+

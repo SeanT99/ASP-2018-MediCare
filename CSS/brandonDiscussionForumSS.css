@@ -1,0 +1,60 @@
+﻿body {
+    font-family: 'Trebuchet MS';
+    
+}
+
+
+/*try using animations*/
+
+.createButton {
+    position: static;
+    float: right;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+.searchButton {
+    position: static;
+    float: right;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.deleteButton {
+    float: right;
+    margin-right: 10px;
+
+}
+
+.theSearchBar{
+    float: right;
+    margin-right: 20px;
+}
+
+.deleteTB {
+    float: right;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+/*Create discussion post SS*/
+
+.theDescription {
+    font-family: 'Times New Roman';
+    text-align: left;
+
+}
+
+.dateAndTitle{
+    margin-right: 200px;
+}
+
