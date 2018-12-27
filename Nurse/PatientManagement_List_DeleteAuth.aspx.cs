@@ -9,6 +9,8 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
+        IDDisplay.Attributes.Add("readonly", "readonly");//to redonly the txt box
+        IDDisplay.Text = "testing123";//set text box value
     }
 }
