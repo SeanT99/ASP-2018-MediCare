@@ -7,7 +7,7 @@
         <tr>
             <td style="width: 201px; height: 45px;">Your Login Password:
             </td>
-            <td style="height: 45px"><asp:TextBox ID="PasswordTB" runat="server" Width="225px"></asp:TextBox></td>
+            <td style="height: 45px"><asp:TextBox ID="PasswordTB" runat="server" Width="225px" TextMode="Password"></asp:TextBox></td>
         </tr>
         <tr>
             <td style="width: 201px; height: 45px;">Patient&#39;s ID:</td>
@@ -22,7 +22,7 @@
             <td style="height: 18px"></td>
         </tr>
     </table>
-    <asp:Button ID="DelConfirmBtn" runat="server" Text="Confirm Delete" Width="135px" />
+    <asp:Button ID="DelConfirmBtn" runat="server" Text="Confirm Delete" Width="135px" OnClick="DelConfirmBtn_Click" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">

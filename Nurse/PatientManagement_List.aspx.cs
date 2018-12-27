@@ -17,10 +17,7 @@ public partial class Nurse_PatientInfoListing : System.Web.UI.Page
             bind();
         }
     }
-
-
-
-
+    
     protected void bind()
     {
         List<PatientInfo> patients = new List<PatientInfo>();
@@ -42,34 +39,10 @@ public partial class Nurse_PatientInfoListing : System.Web.UI.Page
     }
 
 
-
-
     protected void gvPatient_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
+        string id = gvPatient.DataKeys[e.RowIndex].Value.ToString();
+        Response.Redirect("PatientManagement_List_DeleteAuth.aspx?id=" + id);
         
-        // Get the currently selected row.
-        string deleteid = gvPatient.DataKeys[e.RowIndex].Value.ToString();
-
-        //TODO: add verification step for delete command
-
-        //get the patient's email and name
-        PatientInfo x = a.PatientInfoGet(deleteid);
-        string email = x.Email;
-        string name = x.Given_Name;
-
-        //send delete command
-        int result = a.PatientDelete(deleteid);
-        
-        if (result > 0)
-        {
-            Response.Write("<script>alert('Patient Removed successfully');</script>");
-
-            //send email
-            mail.sendDeletedMail(email,name);
-        }
-        else {
-            Response.Write("<script>alert('Product Removal NOT successful');</script>");
-        }
-        Response.Redirect("PatientManagement_List.aspx");
     }
 }

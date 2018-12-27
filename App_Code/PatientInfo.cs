@@ -155,6 +155,7 @@ public class PatientInfo
     }
 
     // TODO: handle execption for patientListRetrieve method
+    //TODO: filter out the nurses' accounts
     //the patientListRetrieve method
     public List<PatientInfo> PatientListGet()
     {
