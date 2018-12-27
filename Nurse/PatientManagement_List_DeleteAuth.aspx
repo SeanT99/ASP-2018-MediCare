@@ -5,17 +5,21 @@
 
     <table style="width:100%;">
         <tr>
-            <td style="width: 201px">Your Login Password:
+            <td style="width: 201px; height: 45px;">Your Login Password:
             </td>
-            <td><asp:TextBox ID="PasswordTB" runat="server" Width="225px"></asp:TextBox></td>
+            <td style="height: 45px"><asp:TextBox ID="PasswordTB" runat="server" Width="225px"></asp:TextBox></td>
         </tr>
         <tr>
-            <td style="width: 201px; height: 26px;">Patient&#39;s ID:</td>
-            <td><asp:TextBox ID="IDDisplay" runat="server"></asp:TextBox></td>
+            <td style="width: 201px; height: 45px;">Patient&#39;s ID:</td>
+            <td><asp:TextBox ID="IDDisplay" runat="server" Width="225px"></asp:TextBox></td>
         </tr>
         <tr>
-            <td style="width: 201px">Enter verification text (&quot;Delete this patient&quot;):</td>
+            <td style="width: 201px; height: 45px;">Enter verification text (&quot;Delete this patient&quot;):</td>
             <td><asp:TextBox ID="VerificationTB" runat="server" Width="225px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td style="width: 201px; height: 18px;"></td>
+            <td style="height: 18px"></td>
         </tr>
     </table>
     <asp:Button ID="DelConfirmBtn" runat="server" Text="Confirm Delete" Width="135px" />
