@@ -80,7 +80,7 @@ public partial class Nurse_Registration : System.Web.UI.Page
             PatientInfo patient = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history, login_password, sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3);
 
             int result = patient.PatientInsert(hashing[0]);
-
+            
             if (result > 0)
             {
                 //Sending out welcome email
@@ -89,6 +89,7 @@ public partial class Nurse_Registration : System.Web.UI.Page
                 Response.Write("<script>alert('New patient added successfully');</script>");
             }
 
+            //TODO: if mail fail drop user entry in db
 
         }
 
