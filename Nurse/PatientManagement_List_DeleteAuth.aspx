@@ -15,7 +15,9 @@
         </tr>
         <tr>
             <td style="width: 201px; height: 45px;">Enter verification text (&quot;Delete this patient&quot;):</td>
-            <td><asp:TextBox ID="VerificationTB" runat="server" Width="225px" autocomplete="off"></asp:TextBox></td>
+            <td><asp:TextBox ID="VerificationTB" runat="server" Width="225px" autocomplete="off"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="VerificationTB" ErrorMessage="Please enter verification text" Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator>
+            </td>
         </tr>
         <tr>
             <td style="width: 201px; height: 18px;"></td>
