@@ -50,12 +50,12 @@ public partial class Nurse_Registration : System.Web.UI.Page
             string medical_allergies = allergyTB.Text;
             string medical_history = medHistTB.Text;
 
-            string sec_qn1 = sq1DDL.SelectedItem.Text;
-            string sec_ans1 = sqAns1TB.Text;
-            string sec_qn2 = sq2DDL.SelectedItem.Text;
-            string sec_ans2 = sqAns2TB.Text;
-            string sec_qn3 = sq3DDL.SelectedItem.Text;
-            string sec_ans3 = sqAns3TB.Text;
+            string sec_qn1 = "";
+            string sec_ans1 = "";
+            string sec_qn2 = "";
+            string sec_ans2 = "";
+            string sec_qn3 = "";
+            string sec_ans3 = "";
 
             //set gender
             if (genderRB.SelectedIndex == 0)
@@ -297,4 +297,5 @@ public partial class Nurse_Registration : System.Web.UI.Page
         return hashDetail;
     }
     
+
 }
