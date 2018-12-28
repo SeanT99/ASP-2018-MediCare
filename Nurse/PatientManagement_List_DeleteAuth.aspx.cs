@@ -24,7 +24,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
     protected void executeDelete(String deleteid)
     {
         //get the patient's email and name
-        PatientInfo x = a.PatientInfoGet(deleteid);
+        PatientInfo x = a.PatientInfoGetAll(deleteid);
         string email = x.Email;
         string name = x.Given_Name;
 
@@ -33,10 +33,21 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
         if (result > 0)
         {
-            Response.Write("<script>alert('Patient Removed successfully');</script>");
+            
 
             //send email
-            mail.sendDeletedMail(email, name);
+            int pass = mail.sendDeletedMail(email, name);
+            if (pass > 0)
+            {
+                Response.Write("<script>alert('Patient Removed successfully');</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Patient Removal NOT successful--Mail Failed');</script>");
+                //re-insert the patient info into db
+                x.PatientInsert();
+            }
+
         }
         else
         {

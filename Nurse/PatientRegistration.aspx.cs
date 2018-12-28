@@ -77,9 +77,9 @@ public partial class Nurse_Registration : System.Web.UI.Page
             string login_password = hashing[1];
 
             //execute insertion of patient account details
-            PatientInfo patient = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history, login_password, sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3);
+            PatientInfo patient = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history, login_password, sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3, hashing[0]);
 
-            int result = patient.PatientInsert(hashing[0]);
+            int result = patient.PatientInsert();
             
             if (result > 0)
             {

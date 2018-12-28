@@ -79,9 +79,11 @@ public class MailUtilities
         }
 
     //for notice of account deletion
-    public void sendDeletedMail(string email, string name)
+    public int sendDeletedMail(string email, string name)
     {
         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+        int result = 1;
 
         //TODO Replace the link with login page link
         string body = "Hi " + name + ",<br/><br/><b>Your MediCare account has been successfully deleted.</b><br/><br/>" + "Please contact the clinic at 6458 9900 if your account has been deleted wrongly.<br/>";
@@ -104,7 +106,17 @@ public class MailUtilities
 
         mail.BodyEncoding = System.Text.Encoding.UTF8;
 
-        smtpClient.Send(mail);
+        try
+        {
+            smtpClient.Send(mail);
+
+        }
+        catch (SmtpException ex)
+        {
+            result = 0;
+        }
+
+        return result;
     }
 
     //TODO: for OTP
