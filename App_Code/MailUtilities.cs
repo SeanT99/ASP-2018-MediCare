@@ -42,9 +42,8 @@ public class MailUtilities
         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
         int result = 1;
-
-        //TODO Replace the link with login page link
-        string body ="Hi " + name + ",<br/>Welcome to your new MediCare account.<br/><br/>" +"This is your new MediCare account password:<br/><b>" + password + "</b><br/><br/>" + "Please login at the link below and change the password on your first login.<br/>" + " <a href=\"http://localhost:57985/Nurse/PatientRegistration.aspx\">Login Here</a> ";
+        
+        string body ="Hi " + name + ",<br/>Welcome to your new MediCare account.<br/><br/>" +"This is your new MediCare account password:<br/><b>" + password + "</b><br/><br/>" + "Please login at the link below and change the password on your first login.<br/>" + " <a href=\"http://localhost:49947/Login/Login\">Login Here</a> ";
 
         smtpClient.UseDefaultCredentials = false;
         smtpClient.Credentials = new System.Net.NetworkCredential("aspmedicare2018@gmail.com", "Exact123");
@@ -84,8 +83,7 @@ public class MailUtilities
         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
         int result = 1;
-
-        //TODO Replace the link with login page link
+        
         string body = "Hi " + name + ",<br/><br/><b>Your MediCare account has been successfully deleted.</b><br/><br/>" + "Please contact the clinic at 6458 9900 if your account has been deleted wrongly.<br/>";
 
         smtpClient.UseDefaultCredentials = false;

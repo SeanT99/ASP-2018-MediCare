@@ -18,6 +18,7 @@ public partial class Login_Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        IncorrectUsernameAndPasswordLabel.Visible = false;
         SecurityTable.Visible = false;
 
     }
@@ -90,7 +91,11 @@ public partial class Login_Login : System.Web.UI.Page
                     Response.Redirect("../Nurse/PatientRegistration.aspx");
                 }
             }
+            else
+            {
+                IncorrectUsernameAndPasswordLabel.Visible = true;
 
+            }
         }
     }
     

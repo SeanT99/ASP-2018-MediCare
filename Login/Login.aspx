@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-group ml-sm-5">
-                    <asp:Label ID="IncorrectUsernameAndPasswordLabel" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="IncorrectUsernameAndPasswordLabel" runat="server" ForeColor="Red">UserName or Password invalid</asp:Label>
                 </div>
 
                 <%--For Security Table--%>
