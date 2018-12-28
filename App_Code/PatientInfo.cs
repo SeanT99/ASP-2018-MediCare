@@ -155,7 +155,6 @@ public class PatientInfo
     }
 
     // TODO: handle execption for patientListRetrieve method
-    //TODO: filter out the nurses' accounts
     //the patientListRetrieve method
     public List<PatientInfo> PatientListGet()
     {
@@ -163,7 +162,7 @@ public class PatientInfo
 
         string id, family_Name, given_Name, gender, mobileNumber, medical_allergies, kin_contact;
     
-        string queryStr = "SELECT * FROM PatientInfo ORDER BY family_Name";
+        string queryStr = "SELECT * FROM PatientInfo WHERE acctype = \'PATIENT   \' ORDER BY family_Name";
 
         SqlConnection conn = new SqlConnection(_connStr);
         SqlCommand cmd = new SqlCommand(queryStr, conn);
