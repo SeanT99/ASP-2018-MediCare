@@ -8,14 +8,14 @@
         <tr>
             <td style="width: 318px; height: 33px;">Given Name</td>
             <td style="height: 33px">
-                <asp:TextBox ID="GNameTB" runat="server" Width="515px" ></asp:TextBox>
+                <asp:TextBox ID="GNameTB" runat="server" Width="515px" autocomplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="GNameTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
             </td>
         </tr>
         <tr>
             <td style="width: 318px">Family Name</td>
             <td>
-                <asp:TextBox ID="FNameTB" runat="server" Width="515px"></asp:TextBox>
+                <asp:TextBox ID="FNameTB" runat="server" Width="515px" autocomplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FNameTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
             </td>
         </tr>
@@ -52,7 +52,7 @@
         <tr>
             <td style="height: 26px; width: 318px">ID No</td>
             <td style="height: 26px">
-                <asp:TextBox ID="IDTB" runat="server" Width="265px"></asp:TextBox>
+                <asp:TextBox ID="IDTB" runat="server" Width="265px" autocomplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="IDTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
                 <asp:CustomValidator runat="server" id="cusCustom" controltovalidate="IDTB" onservervalidate="cusCustom_ServerValidateNRIC" errormessage="The NRIC Number is Invalid!" Font-Bold="True" ForeColor="Red" />
             </td>
@@ -67,7 +67,7 @@
         <tr>
             <td style="width: 318px">Email</td>
             <td>
-                <asp:TextBox ID="emailTB" runat="server"></asp:TextBox>
+                <asp:TextBox ID="emailTB" runat="server autocomplete="off""></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="emailTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="emailTB" ErrorMessage="This is an invalid email" Font-Bold="True" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
             </td>
@@ -75,14 +75,14 @@
         <tr>
             <td style="width: 318px">Mobile Phone</td>
             <td>
-                <asp:TextBox ID="mobileTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8"></asp:TextBox>
+                <asp:TextBox ID="mobileTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8" autocomplete="off"></asp:TextBox>
                 <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="mobileTB" ErrorMessage="Only numbers allowed" Font-Bold="True" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
             </td>
         </tr>
         <tr>
             <td style="width: 318px">House Phone</td>
             <td>
-                <asp:TextBox ID="homeTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8"></asp:TextBox>
+                <asp:TextBox ID="homeTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8" autocomplete="off"></asp:TextBox>
                 <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToValidate="homeTB" ErrorMessage="Only numbers allowed" Font-Bold="True" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
             </td>
         </tr>
@@ -115,7 +115,7 @@
         <tr>
             <td style="width: 318px">Postal Code</td>
             <td>
-                <asp:TextBox ID="postalTB" runat="server" Width="147px" MaxLength="6"></asp:TextBox>
+                <asp:TextBox ID="postalTB" runat="server" Width="147px" MaxLength="6" autocomplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="postalTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
                 <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="postalTB" ErrorMessage="Only numbers allowed" Font-Bold="True" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
             </td>
@@ -137,7 +137,7 @@
         <tr>
             <td style="width: 318px">Contact number</td>
             <td>
-                <asp:TextBox ID="ecNumberTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8"></asp:TextBox>
+                <asp:TextBox ID="ecNumberTB" runat="server" Width="265px" TextMode="Phone" MaxLength="8" autoComplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ecNumberTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
                 <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToValidate="ecNumberTB" ErrorMessage="Only numbers allowed" Font-Bold="True" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
             </td>
