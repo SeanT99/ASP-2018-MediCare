@@ -60,7 +60,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
         //TOOD check if the verification text matches 
         if(VerificationTB.Text == "Delete this patient")
         {
-            //TODO check password
+            //check password
             //bool pass = authDelete(id, PasswordTB.Text);
             bool pass = authDelete("ADMIN", PasswordTB.Text);
 
@@ -70,7 +70,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
             }
             else
             {
-                //TODO add alert if fail coz password
+                //alert if fail coz password
                 Response.Write("<script>alert('Password is wrong');</script>");
             }
 
