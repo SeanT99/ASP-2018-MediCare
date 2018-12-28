@@ -7,6 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Diagnostics;
 
 /// <summary>
 /// Class for the patient's information
@@ -154,8 +155,7 @@ public class PatientInfo
         this.salt = salt;
         this.acctype = acctype;
     }
-
-    // TODO: handle execption for patientListRetrieve method
+    
     //the patientListRetrieve method
     public List<PatientInfo> PatientListGet()
     {
@@ -167,28 +167,32 @@ public class PatientInfo
 
         SqlConnection conn = new SqlConnection(_connStr);
         SqlCommand cmd = new SqlCommand(queryStr, conn);
-
-        conn.Open();
-        SqlDataReader dr = cmd.ExecuteReader();
-
-        while (dr.Read())
+        try
         {
-            id = dr["id"].ToString();
-            family_Name = dr["family_Name"].ToString();
-            given_Name = dr["given_Name"].ToString();
-            gender = dr["gender"].ToString();
-            mobileNumber = dr["mobileNumber"].ToString();
-            medical_allergies = dr["medical_allergies"].ToString();
-            kin_contact = dr["kin_name"].ToString() + " - " + dr
-                ["kin_contact"].ToString();
-            PatientInfo a = new PatientInfo(id, family_Name, given_Name, gender, mobileNumber, medical_allergies, kin_contact);
-            patients.Add(a);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                id = dr["id"].ToString();
+                family_Name = dr["family_Name"].ToString();
+                given_Name = dr["given_Name"].ToString();
+                gender = dr["gender"].ToString();
+                mobileNumber = dr["mobileNumber"].ToString();
+                medical_allergies = dr["medical_allergies"].ToString();
+                kin_contact = dr["kin_name"].ToString() + " - " + dr
+                    ["kin_contact"].ToString();
+                PatientInfo a = new PatientInfo(id, family_Name, given_Name, gender, mobileNumber, medical_allergies, kin_contact);
+                patients.Add(a);
+            }
+
+            conn.Close();
+            dr.Close();
+            dr.Dispose();
         }
-
-        conn.Close();
-        dr.Close();
-        dr.Dispose();
-
+        catch (SqlException e) {
+            Debug.Write(e);
+        }
         return patients;
     }
 
@@ -357,6 +361,7 @@ public class PatientInfo
         return x;
     }
 
+    //TODO handle sql exception
     public PatientInfo PatientInfoGetAll(string qid)
     {
         PatientInfo x = null;

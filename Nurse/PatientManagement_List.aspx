@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Nurse.master" AutoEventWireup="true" CodeFile="PatientManagement_List.aspx.cs" Inherits="Nurse_PatientInfoListing" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Label runat="server" Text="*No Patients Found*" ID="notFoundLbl" Font-Bold="True" ViewStateMode="Disabled" Visible="False"></asp:Label>
     <asp:GridView ID="gvPatient" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvPatient_SelectedIndexChanged" DataKeyNames="id" OnRowDeleting="gvPatient_RowDeleting">
          <Columns>
             <asp:BoundField DataField="id" HeaderText="ID Number" />
