@@ -67,7 +67,7 @@
         <tr>
             <td style="width: 318px">Email</td>
             <td>
-                <asp:TextBox ID="emailTB" runat="server autocomplete="off""></asp:TextBox>
+                <asp:TextBox ID="emailTB" runat="server" autocomplete="off"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="emailTB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="emailTB" ErrorMessage="This is an invalid email" Font-Bold="True" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
             </td>
