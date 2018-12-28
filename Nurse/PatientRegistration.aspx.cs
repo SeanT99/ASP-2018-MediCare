@@ -92,7 +92,7 @@ public partial class Nurse_Registration : System.Web.UI.Page
                 }
                 else
                 {
-                    //if mail fail drop user entry in db
+                    //TODO: if mail fail drop user entry in db
                     patient.PatientDelete(id);
                     Response.Write("<script>alert('New patient not added successfully --- no connection to mail');</script>");
                 }
