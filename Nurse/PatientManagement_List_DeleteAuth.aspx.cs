@@ -90,32 +90,36 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
         PatientInfo LoginInfo = new PatientInfo();
         PatientInfo UserLoginDetails = LoginInfo.GetLoginDetails(id);
 
-        string originalSaltValue = UserLoginDetails.Salt;
-        byte[] array = Convert.FromBase64String(originalSaltValue);
-
-
-        //2. concatenate the plaintext to the salt and hash it (using PBKDF2)
-        var pbkdf2 = new Rfc2898DeriveBytes(ToHashUserLoginInput, array, 10000);
-
-        //3. store the hash 
-        //place the string in the byte array
-        byte[] hash = pbkdf2.GetBytes(20);
-
-        //make new byte array to store the hashed plaintext+salt
-        //why 36? cause 20 for hash 16 for salt 
-        byte[] hashBytes = new byte[36];
-        ////place the salt and hash in their respective places
-        Array.Copy(array, 0, hashBytes, 0, 16);
-        Array.Copy(hash, 0, hashBytes, 16, 20);
-
-        ////4. convert the byte array to a string
-        hashStr = Convert.ToBase64String(hashBytes);
-        
-
-        if (hashStr == UserLoginDetails.Login_password && UserLoginDetails.Acctype != "PATIENT   ")
+        if (UserLoginDetails != null)
         {
-            pass = true;
+            string originalSaltValue = UserLoginDetails.Salt;
+            byte[] array = Convert.FromBase64String(originalSaltValue);
+
+
+            //2. concatenate the plaintext to the salt and hash it (using PBKDF2)
+            var pbkdf2 = new Rfc2898DeriveBytes(ToHashUserLoginInput, array, 10000);
+
+            //3. store the hash 
+            //place the string in the byte array
+            byte[] hash = pbkdf2.GetBytes(20);
+
+            //make new byte array to store the hashed plaintext+salt
+            //why 36? cause 20 for hash 16 for salt 
+            byte[] hashBytes = new byte[36];
+            ////place the salt and hash in their respective places
+            Array.Copy(array, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+            ////4. convert the byte array to a string
+            hashStr = Convert.ToBase64String(hashBytes);
+
+
+            if (hashStr == UserLoginDetails.Login_password && UserLoginDetails.Acctype != "PATIENT   ")
+            {
+                pass = true;
+            }
         }
+      
 
         return pass;
     }

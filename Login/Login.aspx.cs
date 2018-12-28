@@ -48,43 +48,49 @@ public partial class Login_Login : System.Web.UI.Page
         PatientInfo LoginInfo = new PatientInfo();
         PatientInfo UserLoginDetails = LoginInfo.GetLoginDetails(LoginNRIC);
 
-        string originalSaltValue = UserLoginDetails.Salt;
-        byte[] array = Convert.FromBase64String(originalSaltValue);
-        Debug.Write("Original Salt Value" + " " + originalSaltValue);
+
+        if (UserLoginDetails != null)
+        {
+
+            string originalSaltValue = UserLoginDetails.Salt;
+            byte[] array = Convert.FromBase64String(originalSaltValue);
+            Debug.Write("Original Salt Value" + " " + originalSaltValue);
 
 
-        //2. concatenate the plaintext to the salt and hash it (using PBKDF2)
-        var pbkdf2 = new Rfc2898DeriveBytes(ToHashUserLoginInput, array, 10000);
+            //2. concatenate the plaintext to the salt and hash it (using PBKDF2)
+            var pbkdf2 = new Rfc2898DeriveBytes(ToHashUserLoginInput, array, 10000);
 
-        //3. store the hash 
-        //place the string in the byte array
-        byte[] hash = pbkdf2.GetBytes(20);
+            //3. store the hash 
+            //place the string in the byte array
+            byte[] hash = pbkdf2.GetBytes(20);
 
-        //make new byte array to store the hashed plaintext+salt
-        //why 36? cause 20 for hash 16 for salt 
-        byte[] hashBytes = new byte[36];
-        ////place the salt and hash in their respective places
-        Array.Copy(array, 0, hashBytes, 0, 16);
-        Array.Copy(hash, 0, hashBytes, 16, 20);
+            //make new byte array to store the hashed plaintext+salt
+            //why 36? cause 20 for hash 16 for salt 
+            byte[] hashBytes = new byte[36];
+            ////place the salt and hash in their respective places
+            Array.Copy(array, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
 
-        ////4. convert the byte array to a string
+            ////4. convert the byte array to a string
 
-        hashStr = Convert.ToBase64String(hashBytes);
+            hashStr = Convert.ToBase64String(hashBytes);
 
-        Debug.Write("Final hash value" + " " + hashStr);
+            Debug.Write("Final hash value" + " " + hashStr);
 
-        if (hashStr == UserLoginDetails.Login_password)
-        {           
-            if(UserLoginDetails.Acctype == "PATIENT   ")
+            if (hashStr == UserLoginDetails.Login_password)
             {
-                //login as patient
-                Response.Redirect("../Appointment/OnlineAppt.aspx");
+                if (UserLoginDetails.Acctype == "PATIENT   ")
+                {
+                    //login as patient
+                    Response.Redirect("../Appointment/OnlineAppt.aspx");
+                }
+                else
+                {
+                    //login as nurse
+                    Response.Redirect("../Nurse/PatientRegistration.aspx");
+                }
             }
-            else
-            {
-                //login as nurse
-                Response.Redirect("../Nurse/PatientRegistration.aspx");
-            }
+
         }
     }
     
