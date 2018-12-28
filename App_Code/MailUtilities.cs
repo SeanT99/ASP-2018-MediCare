@@ -116,7 +116,6 @@ public class MailUtilities
 
         return result;
     }
-
-    //TODO: for OTP
+    
 
 }
