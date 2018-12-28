@@ -195,8 +195,7 @@ public class PatientInfo
         }
         return patients;
     }
-
-    // TODO: handle execption for PatientInfoGet method    
+  
     //the retrieval of a specific patient's details
     public PatientInfo PatientInfoGet(string qid)
     {
@@ -212,45 +211,51 @@ public class PatientInfo
         SqlConnection conn = new SqlConnection(_connStr);
         SqlCommand cmd = new SqlCommand(queryStr, conn);
         cmd.Parameters.AddWithValue("@id", qid);
-        conn.Open();
-        SqlDataReader dr = cmd.ExecuteReader();
-
-        if (dr.Read())
+        try
         {
-            //store the data into object
-            id = dr["id"].ToString();
-            id_Type = dr["id_Type"].ToString();
-            family_Name = dr["family_Name"].ToString();
-            given_Name = dr["given_Name"].ToString();
-            gender = dr["gender"].ToString();
-            dob = dr["dob"].ToString();
-            email = dr["email"].ToString();
-            mobileNumber = dr["mobileNumber"].ToString();
-            homeNumber = dr["homeNumber"].ToString();
-            address_blk = dr["address_blk"].ToString();
-            address_street = dr["address_street"].ToString();
-            address_unit = dr["address_unit"].ToString();
-            address_building = dr["address_building"].ToString();
-            address_postal = dr["address_postal"].ToString();
-            kin_name = dr["kin_name"].ToString();
-            kin_contact = dr["kin_contact"].ToString();
-            kin_relationship = dr["kin_relationship"].ToString();
-            medical_allergies = dr["medical_allergies"].ToString();
-            medical_history = dr["medical_history"].ToString();
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
 
-            x = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history);
+            if (dr.Read())
+            {
+                //store the data into object
+                id = dr["id"].ToString();
+                id_Type = dr["id_Type"].ToString();
+                family_Name = dr["family_Name"].ToString();
+                given_Name = dr["given_Name"].ToString();
+                gender = dr["gender"].ToString();
+                dob = dr["dob"].ToString();
+                email = dr["email"].ToString();
+                mobileNumber = dr["mobileNumber"].ToString();
+                homeNumber = dr["homeNumber"].ToString();
+                address_blk = dr["address_blk"].ToString();
+                address_street = dr["address_street"].ToString();
+                address_unit = dr["address_unit"].ToString();
+                address_building = dr["address_building"].ToString();
+                address_postal = dr["address_postal"].ToString();
+                kin_name = dr["kin_name"].ToString();
+                kin_contact = dr["kin_contact"].ToString();
+                kin_relationship = dr["kin_relationship"].ToString();
+                medical_allergies = dr["medical_allergies"].ToString();
+                medical_history = dr["medical_history"].ToString();
+
+                x = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history);
+            }
+
+            //close connecetions
+            conn.Close();
+            dr.Close();
+            dr.Dispose();
         }
-
-        //close connecetions
-        conn.Close();
-        dr.Close();
-        dr.Dispose();
+        catch(SqlException e)
+        {
+            Debug.Write(e);
+        }
 
 
         return x;
     }
 
-    // TODO: handle execption for patientInsert method
     //method to add new patient to database
     public int PatientInsert()
     {
@@ -295,13 +300,17 @@ public class PatientInfo
         cmd.Parameters.AddWithValue("@salt", this.salt);
         cmd.Parameters.AddWithValue("@toChangePw", "TRUE");
         cmd.Parameters.AddWithValue("@registerDate", DateTime.Now.ToString("d/M/yyyy"));
-        
-        
 
+        try { 
         conn.Open();
         result += cmd.ExecuteNonQuery();
         conn.Close();
-        
+        }
+        catch (SqlException e)
+        {
+            Debug.Write(e);
+        }
+
         return result;
     }
 
@@ -360,8 +369,7 @@ public class PatientInfo
 
         return x;
     }
-
-    //TODO handle sql exception
+    
     public PatientInfo PatientInfoGetAll(string qid)
     {
         PatientInfo x = null;
@@ -376,49 +384,56 @@ public class PatientInfo
         SqlConnection conn = new SqlConnection(_connStr);
         SqlCommand cmd = new SqlCommand(queryStr, conn);
         cmd.Parameters.AddWithValue("@id", qid);
-        conn.Open();
-        SqlDataReader dr = cmd.ExecuteReader();
 
-        if (dr.Read())
+        try
         {
-            //store the data into object
-            id = dr["id"].ToString();
-            id_Type = dr["id_Type"].ToString();
-            family_Name = dr["family_Name"].ToString();
-            given_Name = dr["given_Name"].ToString();
-            gender = dr["gender"].ToString();
-            dob = dr["dob"].ToString();
-            email = dr["email"].ToString();
-            mobileNumber = dr["mobileNumber"].ToString();
-            homeNumber = dr["homeNumber"].ToString();
-            address_blk = dr["address_blk"].ToString();
-            address_street = dr["address_street"].ToString();
-            address_unit = dr["address_unit"].ToString();
-            address_building = dr["address_building"].ToString();
-            address_postal = dr["address_postal"].ToString();
-            kin_name = dr["kin_name"].ToString();
-            kin_contact = dr["kin_contact"].ToString();
-            kin_relationship = dr["kin_relationship"].ToString();
-            medical_allergies = dr["medical_allergies"].ToString();
-            medical_history = dr["medical_history"].ToString();
-            login_password = dr["login_password"].ToString();
-            salt = dr["salt"].ToString();
-            sec_qn1 = dr["sec_qn1"].ToString();
-            sec_ans1 = dr["sec_ans1"].ToString();
-            sec_qn2 = dr["sec_qn2"].ToString();
-            sec_ans2 = dr["sec_ans2"].ToString();
-            sec_qn3 = dr["sec_qn3"].ToString();
-            sec_ans3 = dr["sec_ans3"].ToString();
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                //store the data into object
+                id = dr["id"].ToString();
+                id_Type = dr["id_Type"].ToString();
+                family_Name = dr["family_Name"].ToString();
+                given_Name = dr["given_Name"].ToString();
+                gender = dr["gender"].ToString();
+                dob = dr["dob"].ToString();
+                email = dr["email"].ToString();
+                mobileNumber = dr["mobileNumber"].ToString();
+                homeNumber = dr["homeNumber"].ToString();
+                address_blk = dr["address_blk"].ToString();
+                address_street = dr["address_street"].ToString();
+                address_unit = dr["address_unit"].ToString();
+                address_building = dr["address_building"].ToString();
+                address_postal = dr["address_postal"].ToString();
+                kin_name = dr["kin_name"].ToString();
+                kin_contact = dr["kin_contact"].ToString();
+                kin_relationship = dr["kin_relationship"].ToString();
+                medical_allergies = dr["medical_allergies"].ToString();
+                medical_history = dr["medical_history"].ToString();
+                login_password = dr["login_password"].ToString();
+                salt = dr["salt"].ToString();
+                sec_qn1 = dr["sec_qn1"].ToString();
+                sec_ans1 = dr["sec_ans1"].ToString();
+                sec_qn2 = dr["sec_qn2"].ToString();
+                sec_ans2 = dr["sec_ans2"].ToString();
+                sec_qn3 = dr["sec_qn3"].ToString();
+                sec_ans3 = dr["sec_ans3"].ToString();
 
 
-            x = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history, login_password, sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3, salt);
+                x = new PatientInfo(id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history, login_password, sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3, salt);
+            }
+
+            //close connecetions
+            conn.Close();
+            dr.Close();
+            dr.Dispose();
         }
-
-        //close connecetions
-        conn.Close();
-        dr.Close();
-        dr.Dispose();
-
+        catch(SqlException e)
+        {
+            Debug.Write(e);
+        }
 
         return x;
     }

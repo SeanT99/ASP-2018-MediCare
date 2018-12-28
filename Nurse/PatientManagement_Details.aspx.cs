@@ -13,7 +13,6 @@ public partial class Nurse_PatientManagement_Details : System.Web.UI.Page
         //Call the patient retrieval method
         PatientInfo x = patient.PatientInfoGet(Request.QueryString["ID"].ToString());
 
-        //TODO: Set all the various fields to the data
         given_NameLBL.Text = x.Given_Name;
         family_NameLBL.Text = x.Family_Name;
         dobLBL.Text = x.Dob;
