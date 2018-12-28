@@ -113,7 +113,6 @@ public partial class Nurse_Registration : System.Web.UI.Page
 
 
     //---------------------------------------------------VALIDATORS---------------------------------------------------------
-    //TODO: Gender validation
 
     //Validate the dob make sure dob is before todays date
     protected void dobValid_ServerValidate(object source, ServerValidateEventArgs args)

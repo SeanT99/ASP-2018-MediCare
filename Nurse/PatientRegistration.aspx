@@ -34,7 +34,7 @@
                     <asp:ListItem>Male</asp:ListItem>
                     <asp:ListItem>Female</asp:ListItem>
                 </asp:RadioButtonList>
-               <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="genderRB" ErrorMessage="This is a required field" Font-Bold="True" ForeColor="Red"/>
+               <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="genderRB" ErrorMessage="Please select a gender" Font-Bold="True" ForeColor="Red"/>
             </td>
         </tr>
         
