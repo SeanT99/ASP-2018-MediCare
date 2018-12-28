@@ -11,4 +11,8 @@ public partial class Patient_Patient_FirstLogin : System.Web.UI.Page
     {
 
     }
+
+    //TODO password rule checkers
+    //TODO check if both passwords match
+    //TODO validate to make sure no 2 security qn is the same
 }
