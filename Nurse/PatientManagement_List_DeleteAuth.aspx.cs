@@ -62,17 +62,16 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
         {
             //TODO check password
             //bool pass = authDelete(id, PasswordTB.Text);
-            bool pass = authDelete("S1840779E", PasswordTB.Text);
+            bool pass = authDelete("ADMIN", PasswordTB.Text);
 
             if (pass == true)
             {
                 executeDelete(id);
-                Response.Redirect("PatientManagement_List.aspx");
             }
             else
             {
                 //TODO add alert if fail coz password
-               // Response.Write("<script>alert('New patient added successfully');</script>");
+                Response.Write("<script>alert('Password is wrong');</script>");
             }
 
 
