@@ -21,14 +21,13 @@ public partial class Nurse_PatientInfoListing : System.Web.UI.Page
     protected void bind()
     {
         List<PatientInfo> patients = new List<PatientInfo>();
-        if (patients.Count > 0)
-        {
-            patients = a.PatientListGet();
-            gvPatient.DataSource = patients;
-            gvPatient.DataBind();
-        }
-        else
+        patients = a.PatientListGet();
+        gvPatient.DataSource = patients;
+        gvPatient.DataBind();
+
+        if (patients.Count == 0)
             notFoundLbl.Visible = true;
+       
     }
 
     protected void gvPatient_SelectedIndexChanged(object sender, EventArgs e)
