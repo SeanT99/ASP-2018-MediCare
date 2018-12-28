@@ -37,9 +37,11 @@ public class MailUtilities
     }
 
     //for new patient welcome
-    public void sendWelcomeMail(string email, string name, string password)
+    public int sendWelcomeMail(string email, string name, string password)
     {
         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+        int result = 1;
 
         //TODO Replace the link with login page link
         string body ="Hi " + name + ",<br/>Welcome to your new MediCare account.<br/><br/>" +"This is your new MediCare account password:<br/><b>" + password + "</b><br/><br/>" + "Please login at the link below and change the password on your first login.<br/>" + " <a href=\"http://localhost:57985/Nurse/PatientRegistration.aspx\">Login Here</a> ";
@@ -61,9 +63,20 @@ public class MailUtilities
         mail.IsBodyHtml = true;
 
         mail.BodyEncoding = System.Text.Encoding.UTF8;
+        
+        try
+        {
+            smtpClient.Send(mail);
 
-        smtpClient.Send(mail);
-    }
+        }
+        catch (SmtpException ex)
+        {
+            result = 0;
+        }
+
+        return result;
+
+        }
 
     //for notice of account deletion
     public void sendDeletedMail(string email, string name)

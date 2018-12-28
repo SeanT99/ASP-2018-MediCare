@@ -84,12 +84,25 @@ public partial class Nurse_Registration : System.Web.UI.Page
             if (result > 0)
             {
                 //Sending out welcome email
-                mail.sendWelcomeMail(email, given_Name, rawPassword);
-                //success message
-                Response.Write("<script>alert('New patient added successfully');</script>");
+                result = mail.sendWelcomeMail(email, given_Name, rawPassword);
+                if(result > 0)
+                {
+                    //success message
+                    Response.Write("<script>alert('New patient added successfully');</script>");
+                }
+                else
+                {
+                    //TODO: if mail fail drop user entry in db
+                    patient.PatientDelete(id);
+                    Response.Write("<script>alert('New patient not added successfully --- no connection to mail');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('New patient not added successfully');</script>");
             }
 
-            //TODO: if mail fail drop user entry in db
+            
 
         }
 
