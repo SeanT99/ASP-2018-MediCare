@@ -205,7 +205,7 @@ public class PatientInfo
         string id, id_Type, family_Name, given_Name, gender, dob, email, mobileNumber, homeNumber, address_blk, address_street, address_unit, address_building, address_postal, kin_name, kin_contact, kin_relationship, medical_allergies, medical_history;
 
         //query string
-        string queryStr = "SELECT * FROM PatientInfo WHERE id = @id";
+        string queryStr = "SELECT id,id_Type,family_Name,given_Name,gender,dob,email,mobileNumber,homeNumber,address_blk,address_street,address_unit,address_building,address_postal,kin_name,kin_contact, kin_relationship,medical_allergies,medical_history FROM PatientInfo WHERE id = @id";
 
         //open connections, insert param and execute query
         SqlConnection conn = new SqlConnection(_connStr);
