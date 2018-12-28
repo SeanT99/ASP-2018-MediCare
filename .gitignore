@@ -1,0 +1,5 @@
+
+*.mdf
+*.ldf
+*.sqlite
+.vs/ASP-2018-MediCare/v15/.suo
