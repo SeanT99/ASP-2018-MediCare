@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -14,7 +13,7 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //retrieve the security qns and answer
-        q.SecurityQuestionGet("ADMIN"); //TODO change to the current user
+        q = q.SecurityQuestionGet("ADMIN"); //TODO change to the current user
         //TODO generate 2 random numbers
         string[] ran = ranNum();
 
@@ -45,6 +44,7 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
             question2 = q.Sec_qn3;
         }
 
+        
         Q1Lbl.Text = question1;
         Q2Lbl.Text = question2;
 
@@ -91,8 +91,7 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
             valid = "12";
         //get b value
         string b = ran(valid);
-
-        Debug.Write(a + b);
+        
         
         string[] result = new string[] { a, b };
         return result;

@@ -7,7 +7,6 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Diagnostics;
 
 /// <summary>
 /// Summary description for SecurityQuestion
@@ -76,7 +75,7 @@ public class SecurityQuestion
                 sec_ans2 = dr["sec_ans2"].ToString();
                 sec_qn3 = dr["sec_qn3"].ToString();
                 sec_ans3 = dr["sec_ans3"].ToString();
-
+                
 
                 x = new SecurityQuestion(sec_qn1, sec_ans1, sec_qn2, sec_ans2, sec_qn3, sec_ans3);
             }
