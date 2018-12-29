@@ -9,13 +9,15 @@ using System.Web.UI.WebControls;
 public partial class Patient_EditProfile_Auth : System.Web.UI.Page
 {
     SecurityQuestion q = new SecurityQuestion();
-    String question1, question2;
+    String question1, question2, ans1, ans2;
+    string[] ran;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //retrieve the security qns and answer
         q = q.SecurityQuestionGet("ADMIN"); //TODO change to the current user
-        //TODO generate 2 random numbers
-        string[] ran = ranNum();
+        //generate 2 random numbers
+        ran = ranNum();
 
         //set the security questions to the labels
         if (ran[0] == "1")
@@ -52,14 +54,50 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
 
     protected void SubmitBtn_Click(object sender, EventArgs e)
     {
-        //TODO check ans
+        bool pass = false;
+
+        //set the security answers to the strings
+        if (ran[0] == "1")
+        {
+            ans1 = q.Sec_ans1;
+        }
+        else if (ran[0] == "2")
+        {
+            ans1 = q.Sec_ans2;
+        }
+        else if (ran[0] == "3")
+        {
+            ans1 = q.Sec_ans3;
+        }
+
+        if (ran[1] == "1")
+        {
+            ans2 = q.Sec_ans1;
+        }
+        else if (ran[1] == "2")
+        {
+            ans2 = q.Sec_ans2;
+        }
+        else if (ran[1] == "3")
+        {
+            ans2 = q.Sec_ans3;
+        }
+
+        //check the ans
+        if (Ans1TB.Text == ans1 && Ans2TB.Text == ans2)
+            pass = true;
+
+        //link to edit page
+        Response.Redirect("http://www.yahoo.com"); //TODO change to the edit profile page
+
+        //TODO prompt ans wrong alert
     }
 
     public string[] ranNum()
     {
         //get a value
         string valid = "123";
-        string a = ran(valid);
+        string a = random(valid);
         //remove a from valid
         if (a == "1")
             valid = "23";
@@ -68,14 +106,14 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
         else if (a == "3")
             valid = "12";
         //get b value
-        string b = ran(valid);
+        string b = random(valid);
         
         
         string[] result = new string[] { a, b };
         return result;
     }
 
-    public string ran(string valid)
+    public string random(string valid)
     {
         StringBuilder res = new StringBuilder();
         Random rnd = new Random();
