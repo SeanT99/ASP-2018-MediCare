@@ -55,28 +55,6 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
         //TODO check ans
     }
 
-    /*
-    public int[] ranNum()
-    {
-        int length = 1;
-        const string valid = "123";
-        StringBuilder res = new StringBuilder();
-        Random rnd = new Random();
-
-        int a = valid[rnd.Next(valid.Length)];
-        res.Append(a);
-
-        int pos = a-1;
-        valid.Remove(pos, 1);
-
-        int b = valid[rnd.Next(valid.Length)];
-
-        int[] num = new int[] { a, b };
-        return num;
-    }
-    */
-
-
     public string[] ranNum()
     {
         //get a value

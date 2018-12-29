@@ -7,6 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Diagnostics;
 
 /// <summary>
 /// Summary description for SecurityQuestion
