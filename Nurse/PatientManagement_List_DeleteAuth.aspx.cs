@@ -21,7 +21,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
     }
 
-    protected void executeDelete(String deleteid)
+    protected int executeDelete(String deleteid)
     {
         //get the patient's email and name
         PatientInfo x = a.PatientInfoGetAll(deleteid);
@@ -30,20 +30,21 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
         //send delete command
         int result = a.PatientDelete(deleteid);
+        int pass = -1;
 
         if (result > 0)
         {
-            
-
             //send email
-            int pass = mail.sendDeletedMail(email, name);
+            pass = mail.sendDeletedMail(email, name);
             if (pass > 0)
             {
-                Response.Write("<script>alert('Patient Removed successfully');</script>");
+                //Response.Write("<script>alert('Patient Removed successfully');location.href='PatientManagement_List.aspx';</script>");
+                //Response.Redirect("PatientManagement_List.aspx");
             }
             else
             {
-                Response.Write("<script>alert('Patient Removal NOT successful--Mail Failed');</script>");
+                //"PatientManagement_List_DeleteAuth.aspx?id=" + id
+                Response.Write("<script>alert('Patient Removal NOT successful--Mail Failed');location.href='PatientManagement_List_DeleteAuth.aspx?id="+id+"';</script>");
                 //re-insert the patient info into db
                 x.PatientInsert();
             }
@@ -51,8 +52,10 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
         }
         else
         {
-            Response.Write("<script>alert('Patient Removal NOT successful');</script>");
+            Response.Write("<script>alert('Patient Removal NOT successful');location.href='PatientManagement_List_DeleteAuth.aspx?id=" + id + "';</script>");
         }
+
+        return pass;
     }
 
     protected void DelConfirmBtn_Click(object sender, EventArgs e)
@@ -66,7 +69,9 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
             if (pass == true)
             {
-                executeDelete(id);
+                int result = executeDelete(id);
+                if (result>0)
+                    Response.Write("<script>alert('Patient Removed successfully');location.href='PatientManagement_List.aspx';</script>");
             }
             else
             {
