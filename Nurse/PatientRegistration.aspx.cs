@@ -88,7 +88,7 @@ public partial class Nurse_Registration : System.Web.UI.Page
                 if(result > 0)
                 {
                     //success message
-                    Response.Write("<script>alert('New patient added successfully');</script>");
+                    Response.Write("<script>alert('New patient added successfully');location.href='PatientManagement_Details.aspx?id="+id+"';</script>");
                 }
                 else
                 {
