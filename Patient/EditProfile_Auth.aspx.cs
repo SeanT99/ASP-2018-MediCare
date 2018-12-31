@@ -54,7 +54,7 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
 
     protected void SubmitBtn_Click(object sender, EventArgs e)
     {
-        bool pass = false;
+        //bool pass = false;
 
         //set the security answers to the strings
         if (ran[0] == "1")
@@ -85,12 +85,13 @@ public partial class Patient_EditProfile_Auth : System.Web.UI.Page
 
         //check the ans
         if (Ans1TB.Text == ans1 && Ans2TB.Text == ans2)
-            pass = true;
-
-        //link to edit page
-        Response.Redirect("http://www.yahoo.com"); //TODO change to the edit profile page
+            //pass = true;
+            //link to edit page
+            Response.Redirect("http://www.yahoo.com"); //TODO change to the edit profile page
 
         //TODO prompt ans wrong alert
+        else
+            Response.Write("<script>alert('One/more of the answer(s) is wrong');</script>");
     }
 
     public string[] ranNum()
