@@ -61,7 +61,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
     protected void DelConfirmBtn_Click(object sender, EventArgs e)
     {
         //TOOD check if the verification text matches 
-        if(VerificationTB.Text == "Delete this patient")
+        if (VerificationTB.Text == "Delete this patient")
         {
             //check password
             //bool pass = authDelete(id, PasswordTB.Text);
@@ -70,7 +70,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
             if (pass == true)
             {
                 int result = executeDelete(id);
-                if (result>0)
+                if (result > 0)
                     Response.Write("<script>alert('Patient Removed successfully');location.href='PatientManagement_List.aspx';</script>");
             }
             else
@@ -82,7 +82,7 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
         }
         else
-            Response.Write("<script>alert('Verification message is wrong');</script>");
+        { Response.Write("<script>alert('Verification message is wrong');</script>"); }
     }
 
     protected bool authDelete(string id, string Password)

@@ -25,7 +25,7 @@
                    <a class ="nav-link" href="Homepage.aspx">Appointment</a>
                </li>
                <li class="nav-item">
-                   <a class ="nav-link" href="Dashboard.aspx">Manage Profile</a>
+                   <a class ="nav-link" href="/Patient/EditProfile_Auth.aspx">Manage Profile</a>
                </li>
               </ul>
         
