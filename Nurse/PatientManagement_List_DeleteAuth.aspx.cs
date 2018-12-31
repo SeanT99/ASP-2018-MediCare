@@ -81,6 +81,8 @@ public partial class Nurse_PatientManagement_List_DeleteAuth : System.Web.UI.Pag
 
 
         }
+        else
+            Response.Write("<script>alert('Verification message is wrong');</script>");
     }
 
     protected bool authDelete(string id, string Password)
